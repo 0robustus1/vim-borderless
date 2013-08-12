@@ -30,6 +30,10 @@ function! s:BorderlessNavigate(direction)
   if last_split
     if a:direction == 'h'
       execute 'tabprevious'
+    elseif a:direction == 'j'
+      execute 'tabfirst'
+    elseif a:direction == 'k'
+      execute 'tablast'
     elseif a:direction == 'l'
       execute 'tabnext'
     endif
@@ -37,6 +41,8 @@ function! s:BorderlessNavigate(direction)
 endfunction
 
 command! BorderlessLeft  call <SID>BorderlessNavigate('h')
+command! BorderlessDown  call <SID>BorderlessNavigate('j')
+command! BorderlessUp    call <SID>BorderlessNavigate('k')
 command! BorderlessRight call <SID>BorderlessNavigate('l')
 
 " determine whether borderless mappings should be used
@@ -47,5 +53,7 @@ endfunction
 " use mappings only if they have not been deactivated
 if s:UseBorderlessMappings()
   nnoremap <silent> <c-w>h :BorderlessLeft<cr>
+  nnoremap <silent> <c-w>j :BorderlessDown<cr>
+  nnoremap <silent> <c-w>k :BorderlessUp<cr>
   nnoremap <silent> <c-w>l :BorderlessRight<cr>
 endif
