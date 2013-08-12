@@ -25,6 +25,10 @@ Borderless just extends their functionality by allowing
 or next tab, if there is no split left to move to in the
 specified direction.
 
+For lack of other use (currently), `<Ctrl-w>j` maps
+to the first tabpage (unless there is a split to navigate to)
+and `<Ctrl-w>k` maps to the last tabpage.
+
 ## Configure
 
 borderless should work out of the box, and if you use
@@ -42,6 +46,8 @@ To configure everything yourself you can use these commands
 instead:
 
 - `:BorderlessLeft`
+- `:BorderlessDown`
+- `:BorderlessUp`
 - `:BorderlessRight`
 
 
