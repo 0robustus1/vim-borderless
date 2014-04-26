@@ -30,14 +30,38 @@ function! s:BorderlessNavigate(direction)
   if last_split
     if a:direction == 'h'
       execute 'tabprevious'
+      call s:JumpToLastWindow()
     elseif a:direction == 'j'
       execute 'tabfirst'
+      call s:JumpToFirstWindow()
     elseif a:direction == 'k'
       execute 'tablast'
+      call s:JumpToLastWindow()
     elseif a:direction == 'l'
       execute 'tabnext'
+      call s:JumpToFirstWindow()
     endif
   endif
+endfunction
+
+" Jumps to the first window of the tab,
+" where first window is the one in the
+" top left corner.
+function! s:JumpToFirstWindow()
+  let first_window_number=1
+  call s:JumpToWindowNr(first_window_number)
+endfunction
+
+" Jumps to the last window of the tab,
+" where last window is the one in the
+" bottom right corner.
+function! s:JumpToLastWindow()
+  let last_window_number = winnr('$')
+  call s:JumpToWindowNr(last_window_number)
+endfunction
+
+function! s:JumpToWindowNr(nr)
+  execute a:nr . "wincmd w"
 endfunction
 
 command! BorderlessLeft  call <SID>BorderlessNavigate('h')
