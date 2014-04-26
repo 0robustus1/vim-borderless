@@ -29,6 +29,18 @@ For lack of other use (currently), `<Ctrl-w>j` maps
 to the first tabpage (unless there is a split to navigate to)
 and `<Ctrl-w>k` maps to the last tabpage.
 
+When actually moving to another tab through these mappings,
+you should jump to a sensible/natural location in the resulting
+tab.
+
+This means that, when moving from a tab to the lefthand tab
+(`<Ctrl-w>h`) you shall land on the righthand window
+(and also to the *bottom* when windows are additionally horizontally stacked).
+
+And when moving from a tab to the righthand tab (`<Ctrl-w>l`)
+you shall land on the lefthand window
+(and also to the *top* when windows are additionally horizontally stacked).
+
 ## Configure
 
 borderless should work out of the box, and if you use
